@@ -22,10 +22,10 @@ def _check_npm_present():
         return False
     return True
 
+
 npm_is_present = pytest.mark.skipif(
-        not _check_npm_present(),
-        reason="Test requires node to be installed"
-    )
+    not _check_npm_present(), reason="Test requires node to be installed"
+)
 
 
 def exists_and_non_empty(path):
@@ -95,6 +95,7 @@ def test_django_app_created(creator):
     assert logs_dir.exists()
     assert (logs_dir / ".gitkeep").exists()
 
+
 def test_django_settings_directory(creator):
     creator.create_django_app()
     creator._make_settings_directory()
@@ -160,10 +161,12 @@ def test_uswds(creator):
         / "uswds.min.js"
     ).exists()
 
+
 def test_circleci(creator):
     creator.set_up_circleci()
     assert (creator.dest_dir / ".circleci").exists()
     assert (creator.dest_dir / ".circleci" / "config.yml").exists()
+
 
 def test_github_actions(creator):
     creator.set_up_github_actions()
